@@ -14,10 +14,10 @@ export default class ProductList extends Component {
   addToCart = (product) => {
     const newCartItem = { ...product }
     this.setState(prevState => ({
-      cart: {
+      cart: [
         ...prevState.cart,
-        newCartItem
-      }
+        newCartItem]
+
     }))
   }
 
@@ -25,9 +25,7 @@ export default class ProductList extends Component {
     return (
       <div>
         <h2>Cart</h2>
-        {this.state.cart.map(
-          (cartItem, index) => <div key={index}>{cartItem.name}</div>
-        )}
+        {this.state.cart.map((item, index) => <div key={index}>{item.name}</div>)}
         <h2>ProductList</h2>
         {this.state.products.map(product => (
           <div onClick={() => this.addToCart(product)} key={product.id}>
